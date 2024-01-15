@@ -2,11 +2,26 @@ const http = require('http');
 
 const server = http.createServer();
 
+const friends = [
+  { id: 0, name: 'Nicola Tesla' },
+  { id: 1, name: 'Sir Isaac Newton' },
+  { id: 2, name: 'Albert Einstein' },
+];
+
 server.on('request', (req, res) => {
-  if (req.url === '/friends') {
+  const items = req.url.split('/'); // /friends/2 => ['', 'friends', '2']
+  const basePath = items[1];
+
+  if (basePath === 'friends') {
     res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ id: 1, name: 'Sir Isaac Newton' }));
-  } else if (req.url === '/messages') {
+
+    if (items.length === 3) {
+      const friendIdx = Number(items[2]);
+      return res.end(JSON.stringify(friends[friendIdx]));
+    }
+
+    res.end(JSON.stringify(friends));
+  } else if (basePath === 'messages') {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/html');
 
