@@ -12,7 +12,14 @@ server.on('request', (req, res) => {
   const items = req.url.split('/'); // /friends/2 => ['', 'friends', '2']
   const basePath = items[1];
 
-  if (basePath === 'friends') {
+  if (req.method === 'POST' && basePath === 'friends') {
+    req.on('data', data => {
+      const friend = data.toString();
+      console.log('Request:', friend);
+
+      friends.push(JSON.parse(friend));
+    });
+  } else if (req.method === 'GET' && basePath === 'friends') {
     res.writeHead(200, { 'Content-Type': 'application/json' });
 
     if (items.length === 3) {
@@ -21,7 +28,7 @@ server.on('request', (req, res) => {
     }
 
     res.end(JSON.stringify(friends));
-  } else if (basePath === 'messages') {
+  } else if (req.method === 'GET' && basePath === 'messages') {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/html');
 
