@@ -1,0 +1,92 @@
+{
+  "info": {
+    "_postman_id": "51d2c9ef-a4c5-4d9c-9d54-27acef72362c",
+    "name": "Node Toolkit",
+    "description": "# Node Toolkit\n\nCrafted for Node.js developers, this Postman API collection is a comprehensive toolkit designed to streamline your workflow. Explore a curated set of essential tools and functionalities tailored to enhance your Node.js development experience. From handling HTTP requests to optimizing server performance, this collection is your go-to resource for seamless Node.js API development. Elevate your coding experience with this Node Toolkit and unlock a world of efficiency and convenience.EndFragment.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "29341582"
+  },
+  "item": [
+    {
+      "name": "Web Servers",
+      "item": [
+        {
+          "name": "GET /friends",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/friends",
+              "host": ["{{baseUrl}}"],
+              "path": ["friends"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /messages",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/messages",
+              "host": ["{{baseUrl}}"],
+              "path": ["messages"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /friends/:id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/friends/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["friends", ":id"],
+              "variable": [
+                {
+                  "id": 0,
+                  "key": "id",
+                  "value": "2",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /friends",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": 3,\r\n    \"name\": \"Ryan Dahl\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/friends",
+              "host": ["{{baseUrl}}"],
+              "path": ["friends"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ]
+}
