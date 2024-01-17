@@ -1,0 +1,12 @@
+{
+  "name": "02-express-api",
+  "version": "1.0.0",
+  "description": "Using Express.js to create a simple API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "ThomasCode92 & ZTM",
+  "license": "ISC"
+}
