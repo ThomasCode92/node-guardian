@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "A comprehensive guide and toolkit for optimizing performance and enhancing security in Node.js applications.",
   "scripts": {
-    "start:web-server": "npm start --prefix ./01-web-servers"
+    "start:web-server": "npm start --prefix ./01-web-servers",
+    "start:express": "npm start --prefix ./02-express-api"
   },
   "keywords": [],
   "author": "ThomasCode92",
