@@ -1,0 +1,12 @@
+{
+  "name": "01-web-servers",
+  "version": "1.0.0",
+  "description": "Fundamentals of Node.js Web Servers",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "ThomasCode92 & ZTM",
+  "license": "ISC"
+}
