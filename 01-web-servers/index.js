@@ -19,6 +19,8 @@ server.on('request', (req, res) => {
 
       friends.push(JSON.parse(friend));
     });
+
+    req.pipe(res);
   } else if (req.method === 'GET' && basePath === 'friends') {
     res.writeHead(200, { 'Content-Type': 'application/json' });
 
