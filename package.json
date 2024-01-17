@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A comprehensive guide and toolkit for optimizing performance and enhancing security in Node.js applications.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:web-server": "npm start --prefix ./01-web-servers"
   },
   "keywords": [],
   "author": "ThomasCode92",
