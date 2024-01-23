@@ -1,9 +1,11 @@
+const path = require('path');
 const express = require('express');
 
 const friendsRouter = require('./routes/friends.router');
 const messagesRouter = require('./routes/messages.router');
 
 const app = express();
+const publicPath = path.join(__dirname, 'public');
 
 const PORT = 3000;
 
@@ -16,6 +18,8 @@ app.use((req, res, next) => {
   const delta = Date.now() - start;
   console.log(`${req.method} ${req.baseUrl}${req.url} ${delta}ms`);
 });
+
+app.use('/static', express.static(publicPath));
 
 app.use('/friends', friendsRouter);
 app.use('/messages', messagesRouter);

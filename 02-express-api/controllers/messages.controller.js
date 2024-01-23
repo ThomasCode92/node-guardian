@@ -1,6 +1,6 @@
 function getMessages(req, res) {
   // res.send('<ul><li>Hello Albert!</li></ul>');
-  res.sendFile('skimountain.jpg', { root: './public' });
+  res.sendFile('skimountain.jpg', { root: './public/images' });
 }
 
 function postMessages(req, res) {
