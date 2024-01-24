@@ -1,0 +1,20 @@
+{
+  "name": "02-express-api",
+  "version": "1.0.0",
+  "description": "Using Express.js to create a simple API",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "ThomasCode92 & ZTM",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "hbs": "^4.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}
