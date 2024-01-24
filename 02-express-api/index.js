@@ -9,6 +9,9 @@ const publicPath = path.join(__dirname, 'public');
 
 const PORT = 3000;
 
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));
+
 app.use(express.json());
 
 app.use((req, res, next) => {
@@ -20,6 +23,10 @@ app.use((req, res, next) => {
 });
 
 app.use('/static', express.static(publicPath));
+
+app.get('/', (req, res) => {
+  res.render('index', { title: 'Vacation Trips', caption: "Let's go Skiing" });
+});
 
 app.use('/friends', friendsRouter);
 app.use('/messages', messagesRouter);
