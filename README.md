@@ -19,6 +19,7 @@ cd node-toolkit
 
 **Table of Content**
 
-| Project    | Short Description                      | Folder                            | Start command              |
-| ---------- | -------------------------------------- | --------------------------------- | -------------------------- |
-| Web Server | Building a basic web server in Node.js | [01-web-server](/01-web-servers/) | `npm run start:web-server` |
+| Project     | Short Description                         | Folder                             | Start command              |
+| ----------- | ----------------------------------------- | ---------------------------------- | -------------------------- |
+| Web Server  | Building a basic web server in Node.js    | [01-web-server](/01-web-servers/)  | `npm run start:web-server` |
+| Express API | Basics about API's with Node.js & Express | [02-express-api](/02-express-api/) | `npm run start:express`    |
