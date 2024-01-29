@@ -1,7 +1,11 @@
 const cluster = require('cluster');
+const os = require('os');
+
 const express = require('express');
 
 const app = express();
+
+const NUM_WORKERS = os.cpus().length;
 
 function delay(duration) {
   const start = Date.now();
@@ -21,10 +25,11 @@ app.get('/timer', (req, res) => {
 
 if (cluster.isMaster) {
   console.log('Master process has been started');
+  console.log(`Creating ${NUM_WORKERS} worker processes...`);
 
-  // Create 2 worker processes
-  cluster.fork();
-  cluster.fork();
+  for (let i = 0; i < NUM_WORKERS; i++) {
+    cluster.fork();
+  }
 } else {
   console.log(`Worker process has been started on ${process.pid}`);
 
