@@ -154,6 +154,36 @@
           "response": []
         }
       ]
+    },
+    {
+      "name": "Performance",
+      "item": [
+        {
+          "name": "GET root",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}",
+              "host": ["{{baseUrl}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /timer",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/timer",
+              "host": ["{{baseUrl}}"],
+              "path": ["timer"]
+            }
+          },
+          "response": []
+        }
+      ]
     }
   ],
   "variable": [
