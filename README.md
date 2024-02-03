@@ -23,3 +23,4 @@ cd node-toolkit
 | ----------- | ----------------------------------------- | ---------------------------------- | -------------------------- |
 | Web Server  | Building a basic web server in Node.js    | [01-web-server](/01-web-servers/)  | `npm run start:web-server` |
 | Express API | Basics about API's with Node.js & Express | [02-express-api](/02-express-api/) | `npm run start:express`    |
+| Performance | Use PM2 to improve Node.js performance    | [03-performance](/03-performance/) | _not applicable_           |
