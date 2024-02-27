@@ -5,7 +5,8 @@
   "scripts": {
     "start:web-server": "npm start --prefix ./01-web-servers",
     "start:express": "npm start --prefix ./02-express-api",
-    "start:performance": "npm start --prefix ./03-performance"
+    "start:performance": "npm start --prefix ./03-performance",
+    "start:security": "npm start --prefix ./04-security-auth"
   },
   "keywords": [],
   "author": "ThomasCode92",
