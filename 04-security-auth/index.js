@@ -4,8 +4,16 @@ const https = require('https');
 
 const express = require('express');
 const helmet = require('helmet');
+const dotenv = require('dotenv');
 
 const PORT = process.env.PORT || 3000;
+
+dotenv.config();
+
+const config = {
+  CLIENT_ID: process.env.GOOGLE_OAUTH_CLIENT_ID,
+  CLIENT_SECRET: process.env.GOOGLE_OAUTH_CLIENT_SECRET,
+};
 
 const app = express();
 
