@@ -47,11 +47,25 @@ app.get('/', (req, res) => {
   return res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.get('/auth/google', (req, res) => {});
+app.get('/auth/google', passport.authenticate('google', { scope: ['email'] }));
 
-app.get('/auth/google/callback', (req, res) => {});
+app.get(
+  '/auth/google/callback',
+  passport.authenticate('google', {
+    failureRedirect: '/auth/failure',
+    successRedirect: '/',
+    session: false,
+  }),
+  (req, res) => {
+    console.log('Google called us back!');
+  }
+);
 
 app.get('auth/logout', (req, res) => {});
+
+app.get('/auth/failure', (req, res) => {
+  return res.status(401).send('Failed to log in');
+});
 
 app.get('/secret', checkLoggedIn, (req, res) => {
   return res.send('Your personal secret value is 42!');
