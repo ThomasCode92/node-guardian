@@ -3,6 +3,8 @@ const fs = require('fs');
 const https = require('https');
 
 const express = require('express');
+const passport = require('passport');
+const { Strategy } = require('passport-google-oauth20');
 const helmet = require('helmet');
 const dotenv = require('dotenv');
 
@@ -15,6 +17,19 @@ const config = {
   CLIENT_SECRET: process.env.GOOGLE_OAUTH_CLIENT_SECRET,
 };
 
+const AUTH_OPTIONS = {
+  clientID: config.CLIENT_ID,
+  clientSecret: config.CLIENT_SECRET,
+  callbackURL: '/auth/google/callback',
+};
+
+function verifyCallback(accessToken, refreshToken, profile, done) {
+  console.log('profile:', profile);
+  return done(null, profile);
+}
+
+passport.use(new Strategy(AUTH_OPTIONS, verifyCallback));
+
 const app = express();
 
 function checkLoggedIn(req, res, next) {
@@ -26,6 +41,7 @@ function checkLoggedIn(req, res, next) {
 }
 
 app.use(helmet());
+app.use(passport.initialize());
 
 app.get('/', (req, res) => {
   return res.sendFile(path.join(__dirname, 'public', 'index.html'));
