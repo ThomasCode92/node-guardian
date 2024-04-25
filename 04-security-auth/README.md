@@ -21,6 +21,31 @@ Follow these steps to set up and run the web server locally:
    openssl req -x509 -newkey rsa:4096 -nodes -keyout key.pem -out cert.pem -days 365
    ```
 
-3. **Start the application**
+   Place the generated files into a `cert` folder. These files are essential for initiating the server with the HTTPS protocol.
 
-   Start the server by running `npm run start`. Once the server is running, open your web browser and visit `https://localhost:3000` to experience the application hosted securely via HTTPS.
+3. **Environment Variables**
+
+   Access the [Google Developer Console](https://console.cloud.google.com) to initiate a new project. Proceed to activate OAuth for this project by configuring a "_Consent Screen_" and generating credentials. Subsequently, transfer the _Client ID_ and _Client Secret_ to a `.env` file within the current directory.<br />Additionally, include two supplementary values for crafting secure cookie keys.
+
+   ```bash
+   # Google OAuth keys
+   GOOGLE_OAUTH_CLIENT_ID=<Your Client ID>
+   GOOGLE_OAUTH_CLIENT_SECRET=<Your Client Secret>
+
+   # Cookie keys
+   COOKIE_KEY_1=<Some Random String>
+   COOKIE_KEY_2=<Some Random String>
+   ```
+
+4. **Start the application**
+
+   Start the server by running `npm run start`. Once the server is running, open your web browser and visit `https://localhost:3000` to experience the application hosted securely via HTTPS.<br />
+   Notice the `/secret` endpoint is only accessible when being logged in (via Google).
+
+### Customize the Server
+
+Feel free to explore and modify the `index.js` file to gain insights into the workings of the (OAuth) authorization flow, security middleware like passport.js, setting up HTTPS, ...<br />Visit the following pages for more information:
+
+- [Google OAuth](https://developers.google.com/identity/protocols/oauth2)
+- [Passport.js](https://www.passportjs.org/)
+- [Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Nodejs_Security_Cheat_Sheet.html)
