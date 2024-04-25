@@ -94,7 +94,12 @@ app.get(
   }
 );
 
-app.get('auth/logout', (req, res) => {});
+app.get('/auth/logout', (req, res) => {
+  req.logout(err => {
+    if (err) return res.status(500).send('Failed to log out');
+    res.redirect('/');
+  });
+});
 
 app.get('/auth/failure', (req, res) => {
   return res.status(401).send('Failed to log in');
