@@ -33,6 +33,16 @@ function verifyCallback(accessToken, refreshToken, profile, done) {
 
 passport.use(new Strategy(AUTH_OPTIONS, verifyCallback));
 
+// save the session to the cookie
+passport.serializeUser((user, done) => {
+  done(null, user);
+});
+
+// read the session from the cookie
+passport.deserializeUser((obj, done) => {
+  done(null, obj);
+});
+
 const app = express();
 
 function checkLoggedIn(req, res, next) {
@@ -51,7 +61,17 @@ const cookieOptions = {
 
 app.use(helmet());
 app.use(cookieSession(cookieOptions));
+
+// Workaround for an unintentional breaking change
+// More info: https://github.com/jaredhanson/passport/issues/904
+app.use((req, res, next) => {
+  if (!req.session.regenerate) req.session.regenerate = cb => cb();
+  if (!req.session.save) req.session.save = cb => cb();
+  next();
+});
+
 app.use(passport.initialize());
+app.use(passport.session());
 
 app.get('/', (req, res) => {
   return res.sendFile(path.join(__dirname, 'public', 'index.html'));
@@ -64,7 +84,7 @@ app.get(
   passport.authenticate('google', {
     failureRedirect: '/auth/failure',
     successRedirect: '/',
-    session: false,
+    session: true,
   }),
   (req, res) => {
     console.log('Google called us back!');
