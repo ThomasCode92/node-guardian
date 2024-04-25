@@ -1,0 +1,23 @@
+{
+  "name": "04-security-auth",
+  "version": "1.0.0",
+  "description": "Secure Node.js application and implement authentication using Passport.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "ThomasCode92 & ZTM",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-session": "^2.1.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "helmet": "^7.1.0",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/cookie-session": "^2.0.49"
+  }
+}

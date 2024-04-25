@@ -19,8 +19,9 @@ cd node-toolkit
 
 **Table of Content**
 
-| Project     | Short Description                         | Folder                             | Start command              |
-| ----------- | ----------------------------------------- | ---------------------------------- | -------------------------- |
-| Web Server  | Building a basic web server in Node.js    | [01-web-server](/01-web-servers/)  | `npm run start:web-server` |
-| Express API | Basics about API's with Node.js & Express | [02-express-api](/02-express-api/) | `npm run start:express`    |
-| Performance | Use PM2 to improve Node.js performance    | [03-performance](/03-performance/) | _not applicable_           |
+| Project         | Short Description                         | Folder                                 | Start command                             |
+| --------------- | ----------------------------------------- | -------------------------------------- | ----------------------------------------- |
+| Web Server      | Building a basic web server in Node.js    | [01-web-server](/01-web-servers/)      | `npm run start:web-server`                |
+| Express API     | Basics about API's with Node.js & Express | [02-express-api](/02-express-api/)     | `npm run start:express`                   |
+| Performance     | Use PM2 to improve Node.js performance    | [03-performance](/03-performance/)     | _not applicable_                          |
+| Security & Auth | Secure Node.js apps and implement OAuth   | [04-security-auth](/04-security-auth/) | `npm run start --prefix 04-security-auth` |
