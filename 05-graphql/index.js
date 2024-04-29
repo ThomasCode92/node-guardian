@@ -1,22 +1,23 @@
 const express = require('express');
-const { buildSchema } = require('graphql');
-const { createHandler } = require('graphql-http/lib/use/express');
+const { createSchema, createYoga } = require('graphql-yoga');
 
-const schema = buildSchema(`
-  type Query {
-    description: String
-    price: Float
-  }
-`);
-
-const rootValue = {
-  description: 'Red Shoe',
-  price: 42.12,
-};
-
-const handler = createHandler({ schema, rootValue });
+const schema = createSchema({
+  typeDefs: `
+    type Query {
+      description: String
+      price: Float
+    }
+  `,
+  resolvers: {
+    Query: {
+      description: () => 'Red Shoe',
+      price: () => 42.12,
+    },
+  },
+});
 
 const app = express();
+const handler = createYoga({ schema });
 
 app.use('/graphql', handler);
 
