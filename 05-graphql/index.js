@@ -1,42 +1,21 @@
+const path = require('path');
+
 const express = require('express');
-const { createSchema, createYoga } = require('graphql-yoga');
+const { createYoga } = require('graphql-yoga');
+const { makeExecutableSchema } = require('@graphql-tools/schema');
+const { loadFilesSync } = require('@graphql-tools/load-files');
 
-const { DUMMY_PRODUCTS, DUMMY_ORDERS } = require('./data');
+const productsModel = require('./products/products.model');
+const ordersModel = require('./orders/orders.model');
 
-const schema = createSchema({
-  typeDefs: `
-    type Query {
-      products: [Product]
-      orders: [Order]
-    }
+const typesArray = loadFilesSync(path.join(__dirname, '**/*.graphql'));
 
-    type Product {
-      id: ID!
-      description: String!
-      reviews: [Review]
-      price: Float!
-    }
-
-    type Review {
-      rating: Int!
-      comment: String
-    }
-
-    type Order {
-      date: String!
-      subtotal: Float!
-      items: [OrderItem]
-    }
-
-    type OrderItem {
-      product: Product!
-      quantity: Int!
-    }
-  `,
+const schema = makeExecutableSchema({
+  typeDefs: typesArray,
   resolvers: {
     Query: {
-      products: () => DUMMY_PRODUCTS,
-      orders: () => DUMMY_ORDERS,
+      products: () => productsModel,
+      orders: () => ordersModel,
     },
   },
 });
