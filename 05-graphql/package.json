@@ -4,7 +4,8 @@
   "description": "Building a GraphQL server with Node.js and Express",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "ThomasCode92 & ZTM",
@@ -13,5 +14,8 @@
     "express": "^4.19.2",
     "graphql": "^16.8.1",
     "graphql-yoga": "^5.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
   }
 }

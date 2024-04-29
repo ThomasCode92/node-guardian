@@ -17,7 +17,7 @@ const schema = createSchema({
 });
 
 const app = express();
-const handler = createYoga({ schema });
+const handler = createYoga({ schema, graphiql: true });
 
 app.use('/graphql', handler);
 
