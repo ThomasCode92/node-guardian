@@ -1,17 +1,42 @@
 const express = require('express');
 const { createSchema, createYoga } = require('graphql-yoga');
 
+const { DUMMY_PRODUCTS, DUMMY_ORDERS } = require('./data');
+
 const schema = createSchema({
   typeDefs: `
     type Query {
-      description: String
-      price: Float
+      products: [Product]
+      orders: [Order]
+    }
+
+    type Product {
+      id: ID!
+      description: String!
+      reviews: [Review]
+      price: Float!
+    }
+
+    type Review {
+      rating: Int!
+      comment: String
+    }
+
+    type Order {
+      date: String!
+      subtotal: Float!
+      items: [OrderItem]
+    }
+
+    type OrderItem {
+      product: Product!
+      quantity: Int!
     }
   `,
   resolvers: {
     Query: {
-      description: () => 'Red Shoe',
-      price: () => 42.12,
+      products: () => DUMMY_PRODUCTS,
+      orders: () => DUMMY_ORDERS,
     },
   },
 });
