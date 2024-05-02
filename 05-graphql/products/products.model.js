@@ -1,6 +1,6 @@
 const products = [
-  { id: 'redshoe', description: 'Red Shoe', price: 42.12 },
-  { id: 'bluejeans', description: 'Blue Jeans', price: 55.55 },
+  { id: 'redshoe', description: 'Red Shoe', price: 42.12, reviews: [] },
+  { id: 'bluejeans', description: 'Blue Jeans', price: 55.55, reviews: [] },
 ];
 
 function getAllProducts() {
@@ -18,4 +18,15 @@ function getProductById(productId) {
   return products.find(product => product.id === productId);
 }
 
-module.exports = { getAllProducts, getProductsByPrice, getProductById };
+function addNewProduct(id, description, price) {
+  const newProduct = { id, description, price, reviews: [] };
+  products.push(newProduct);
+  return newProduct;
+}
+
+module.exports = {
+  getAllProducts,
+  getProductsByPrice,
+  getProductById,
+  addNewProduct,
+};
