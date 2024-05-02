@@ -13,4 +13,9 @@ function getProductsByPrice(minPrice, maxPrice) {
   );
 }
 
-module.exports = { getAllProducts, getProductsByPrice };
+function getProductById(productId) {
+  console.log('productId:', productId);
+  return products.find(product => product.id === productId);
+}
+
+module.exports = { getAllProducts, getProductsByPrice, getProductById };
