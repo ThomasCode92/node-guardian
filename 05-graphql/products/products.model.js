@@ -14,7 +14,6 @@ function getProductsByPrice(minPrice, maxPrice) {
 }
 
 function getProductById(productId) {
-  console.log('productId:', productId);
   return products.find(product => product.id === productId);
 }
 
@@ -24,9 +23,20 @@ function addNewProduct(id, description, price) {
   return newProduct;
 }
 
+function addNewProductReview(id, rating, comment) {
+  const product = getProductById(id);
+
+  if (!product) return;
+
+  const review = { rating, comment };
+  product.reviews.push(review);
+  return review;
+}
+
 module.exports = {
   getAllProducts,
   getProductsByPrice,
   getProductById,
   addNewProduct,
+  addNewProductReview,
 };
