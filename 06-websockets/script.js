@@ -6,7 +6,7 @@ const context = canvas.getContext('2d');
 
 const width = 500;
 const height = 700;
-const screenWidth = window.screen.width;
+const screenWidth = document.body.clientWidth;
 const canvasPosition = screenWidth / 2 - width / 2;
 const isMobile = window.matchMedia('(max-width: 600px)');
 const gameOverEl = document.createElement('div');
@@ -91,9 +91,6 @@ function createCanvas() {
   body.appendChild(canvas);
   renderCanvas();
 }
-
-// Remove this
-createCanvas();
 
 // Reset Ball to Center
 function ballReset() {
@@ -194,29 +191,34 @@ function animate() {
   ballMove();
   ballBoundaries();
   computerAI();
+
+  window.requestAnimationFrame(animate);
 }
 
 // Start Game, Reset Everything
 function startGame() {
   playerScore = 0;
   computerScore = 0;
+
   ballReset();
   createCanvas();
   animate();
-  canvas.addEventListener('mousemove', e => {
-    console.log(e.clientX);
+
+  canvas.addEventListener('mousemove', event => {
     playerMoved = true;
+
     // Compensate for canvas being centered
-    paddleBottomX = e.clientX - canvasPosition - paddleDiff;
-    if (paddleBottomX < paddleDiff) {
-      paddleBottomX = 0;
-    }
-    if (paddleBottomX > width - paddleWidth) {
+    paddleBottomX = event.clientX - canvasPosition - paddleDiff;
+
+    if (paddleBottomX < paddleDiff) paddleBottomX = 0;
+
+    if (paddleBottomX > width - paddleWidth)
       paddleBottomX = width - paddleWidth;
-    }
+
     // Hide Cursor
     canvas.style.cursor = 'none';
   });
 }
 
 // On Load
+startGame();
