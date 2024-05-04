@@ -184,6 +184,59 @@
           "response": []
         }
       ]
+    },
+    {
+      "name": "GraphQL",
+      "item": [
+        {
+          "name": "POST /graphql - Mutation",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"query\": \"mutation { addNewProduct(id: \\\"orangejacket\\\", description: \\\"orange jacket\\\", price: 70.55) { description } }\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/graphql",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["graphql"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /graphql - Query",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"query\": \"{ products { description } orders { subtotal items { quantity product { id price reviews { rating } } } } }\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/graphql",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["graphql"]
+            }
+          },
+          "response": []
+        }
+      ]
     }
   ],
   "variable": [
