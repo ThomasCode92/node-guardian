@@ -5,6 +5,7 @@ const server = http.createServer();
 const io = new Server(server, { cors: { origin: '*' } });
 
 const PORT = 3000;
+let readyPlayerCount = 0;
 
 server.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
@@ -12,4 +13,13 @@ server.listen(PORT, () => {
 
 io.on('connection', socket => {
   console.log(`Client with id ${socket.id} connected`);
+
+  socket.on('ready', () => {
+    console.log(`Client with id ${socket.id} is ready`);
+    readyPlayerCount++;
+
+    if (readyPlayerCount === 2) {
+      // broadcast start game event
+    }
+  });
 });
