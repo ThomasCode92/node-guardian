@@ -1,0 +1,12 @@
+{
+  "name": "06-websockets",
+  "version": "1.0.0",
+  "description": "Building a simple multiplayer pong game using websockets",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "ThomasCode92 & ZTM",
+  "license": "ISC"
+}
