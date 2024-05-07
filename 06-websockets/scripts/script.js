@@ -173,15 +173,18 @@ function loadGame() {
 function startGame() {
   paddleIndex = isReferee ? 0 : 1;
   window.requestAnimationFrame(animate);
-  canvas.addEventListener('mousemove', e => {
+  canvas.addEventListener('mousemove', event => {
     playerMoved = true;
-    paddleX[paddleIndex] = e.offsetX;
+    paddleX[paddleIndex] = event.offsetX;
     if (paddleX[paddleIndex] < 0) {
       paddleX[paddleIndex] = 0;
     }
     if (paddleX[paddleIndex] > width - paddleWidth) {
       paddleX[paddleIndex] = width - paddleWidth;
     }
+    socket.emit('paddleMove', {
+      xPosition: paddleX[paddleIndex],
+    });
     // Hide Cursor
     canvas.style.cursor = 'none';
   });
@@ -199,4 +202,9 @@ socket.on('startGame', refereeId => {
 
   isReferee = socket.id === refereeId;
   startGame();
+});
+
+socket.on('paddleMove', paddleData => {
+  const opponentPaddleIndex = paddleIndex === 0 ? 1 : 0;
+  paddleX[opponentPaddleIndex] = paddleData.xPosition;
 });
